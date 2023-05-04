@@ -1,0 +1,35 @@
+1: 
+sudo vi /home/manage_tcat.sh
+
+2: 
+#!/bin/sh
+
+echo "Restarting Tomcat Server"
+sudo service tomcat stop
+
+pid=`ps aux | grep tomcat | grep -v grep | grep -v retomcat | awk '{print $2}'`
+if [ -n "$pid" ]
+   then
+    {
+      sudo kill -9 $pid
+    }
+fi
+
+sudo service tomcat start
+
+3:
+sudo chmod +x /home/manage_tcat.sh
+
+4:
+/home/manage_tcat.sh
+
+5:
+sudo crontab -e
+
+comentario: todos los dias a las 10 de la mañana
+0 10 * * * /home/manage_tcat.sh >/dev/null 2>&1
+
+
+
+
+
