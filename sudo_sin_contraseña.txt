@@ -1,0 +1,5 @@
+1.
+sudo visudo
+
+2.
+<username> ALL=(ALL) NOPASSWD:ALL /usr/bin/systemctl restart servicio
